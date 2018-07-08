@@ -9,21 +9,17 @@ lfmt='%T;%e;%w%f'
 # list of filesystem paths to monitor - one per line
 watc="${HOME}/P/projects/logdirchanges/dirstowatch"
 
-# monitor. note: if recursion not requred remove -r option below!
-inotifywait --fromfile "${watc}" \
-  # comment out below line if you want to use script for additional actions
-  -o "${lfil}" \
-  # comment out below line if recurion not requred
-  -r \
-  # leave below as it is...
-  -m -q \
-  # add/remove events below, comment out entire line to log everything
+# If you don't need recursion remove -r from line 17
+# If you need to perform additional actions remove '-o "${lfil}"' from line 17
+# You can add/remove events on line 18.
+# Remove line 18 if you want to log evereything
+
+inotifywait --fromfile "${watc}" -o "${lfil}" -r -m -q \
   -e create -e modify -e delete -e move \
-  # apply formating...
   --timefmt "${tfmt}" --format "${lfmt}" |
   while read -r evnt 
 do
-  # you can add more actions here. 
+  # you can add more actions here but see comment on line 13 above
   # $evnt is ; delimited 3rd filed contains file system path
   echo "${evnt}" >> ${lfil} # log event
 done
