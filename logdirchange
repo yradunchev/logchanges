@@ -16,5 +16,7 @@ inotifywait --fromfile "${watc}" -o "${lfil}" -m -r -q \
   --timefmt "${tfmt}" --format "${lfmt}" |
   while read -r evnt
 do
-    echo "${evnt}" # log event
+  # you can add more actions here. 
+  # $evnt is ; delimited 3rd filed contains file system path 
+  echo "${evnt}" # log event
 done
