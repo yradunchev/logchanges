@@ -21,5 +21,5 @@ inotifywait --fromfile "${watc}" -o "${lfil}" -r -m -q \
 do
   # you can add more actions here but see comment on line 13 above
   # $evnt is ; delimited 3rd filed contains file system path
-  echo "${evnt}" >> ${lfil} # log event
+  echo "${evnt}" >> "${lfil}" # log event
 done
