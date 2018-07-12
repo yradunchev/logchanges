@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # where log file sits:
-lfil="${HOME}/P/projects/logdirchanges/logfile" 
+lfil="${HOME}/P/projects/logdirchanges/logfile"
 # time stamp format (strftime format):
 tfmt='%F %T'
 # log line format as described in 'man inotifaywatch'
@@ -17,9 +17,9 @@ watc="${HOME}/P/projects/logdirchanges/dirstowatch"
 inotifywait --fromfile "${watc}" -o "${lfil}" -r -m -q \
   -e create -e modify -e delete -e move \
   --timefmt "${tfmt}" --format "${lfmt}" |
-  while read -r evnt 
-do
-  # you can add more actions here but see comment on line 13 above
-  # $evnt is ; delimited 3rd filed contains file system path
-  echo "${evnt}" >> "${lfil}" # log event
-done
+  while
+    read -r evnt; do
+    # you can add more actions here but see comment on line 13 above
+    # $evnt is ; delimited 3rd filed contains file system path
+    echo "${evnt}" >>"${lfil}" # log event
+  done
