@@ -9,9 +9,9 @@ Hint: In addition to logging you can also do other stuff on FS change using this
 
 #### Files:
 
-- logdircahange: bash script doing monitoring & logging.
-
+- logdirchange: bash script doing monitoring & logging.
 
 - dirstowatch: list of file system paths to monitor.
 
+- lcd: same script without comments, only 10 lines.
 
